@@ -25,8 +25,6 @@ resource "aws_vpc" "eks_vpc" {
   }
 }
 
-
-
 ###############################################
 ## Subnets
 ###############################################
@@ -72,7 +70,6 @@ resource "aws_subnet" "private_b" {
   }
 }
 
-
 ###############################################
 # Internet Gateway & NAT
 ###############################################
@@ -83,6 +80,16 @@ resource "aws_internet_gateway" "igw" {
     Name = "eks-igw"
   }
 }
+
+
+resource "aws_eip" "nat_eip" {
+  domain = "vpc"
+
+  tags = {
+    Name = "eks-nat-eip"
+  }
+}
+
 
 
 resource "aws_nat_gateway" "nat_gw" {
