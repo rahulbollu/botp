@@ -28,7 +28,7 @@ resource "aws_vpc" "eks_vpc" {
 
 
 ###############################################
-# Subnets
+## Subnets
 ###############################################
 resource "aws_subnet" "public_a" {
   vpc_id                  = aws_vpc.eks_vpc.id
